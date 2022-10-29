@@ -6,4 +6,4 @@ VERSION = "0.1"
 BASE_URL = "/api/v1"
 
 class Urls:
-    ADDRESS = BASE_URL + "/address"
+    ADDRESS_URL = BASE_URL + "/address"
