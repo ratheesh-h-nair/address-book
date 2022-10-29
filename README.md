@@ -4,6 +4,14 @@
 The app contains the code to retrieve a person's address nearby and within a specific radius. 
 
 
+## Tech Stack
+
+**API:** Python Fast API
+
+**Database:** SQLite
+
+
+
 ## Installation
 
 Clone the repository to the desired location
