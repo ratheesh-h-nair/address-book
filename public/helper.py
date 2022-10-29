@@ -1,6 +1,11 @@
 from fastapi.responses import JSONResponse
 from math import sin, cos, sqrt, atan2, radians
 
+'''
+Contains the helper funcitons
+'''
+
+
 def make_response(status,message,payload):
     response = {
         'status': status,

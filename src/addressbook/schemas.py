@@ -4,6 +4,7 @@ from pydantic import BaseModel,EmailStr
 
 class AddressListModel(BaseModel):
     coordinates:list
+    distance:int
     
 class CreateAddressModel(BaseModel):
     name:str

@@ -12,6 +12,9 @@ router = APIRouter(
 
 @router.post("/create", tags=["Address Book"])
 async def create_address(req:CreateAddressModel,db: Session = Depends(get_db)):
+    '''
+    Create Address with the required parameters
+    '''
     try:
         req_dict = req.dict()
         print(req_dict)
@@ -28,6 +31,9 @@ async def create_address(req:CreateAddressModel,db: Session = Depends(get_db)):
 
 @router.post("/list", tags=["Address Book"])
 async def list_address(req:AddressListModel,db: Session = Depends(get_db)):
+    '''
+    Listing the address based on the distance user passed
+    '''
     try:
        db_resp = db.query(AddressBook).filter(AddressBook.is_active == True).all()
        req_dict = req.dict()
@@ -36,7 +42,7 @@ async def list_address(req:AddressListModel,db: Session = Depends(get_db)):
        for item in resp_dict:
            distance = check_spacial_distance(float(item['latitude']),float(item['longitude']),float(req_dict['coordinates'][0]),float(req_dict['coordinates'][1]))
            print("Name = {} and Phone = {} and Distance = {}".format(item['name'],item['phone'],distance))
-           if(distance <= 100):
+           if(distance <= req.distance):
                response.append(item)
        return make_response(True,Response.ADDRESS_FETCHED_SUCCESSFULLY,response)
     except Exception as e:

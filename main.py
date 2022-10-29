@@ -6,10 +6,12 @@ from fastapi.exceptions import RequestValidationError
 from public import *
 from src import *
 
-
+# App declaration
 app = FastAPI(title=NAME,version=VERSION)
 
 
+
+# Exception handling
 @app.exception_handler(RequestValidationError)
 async def custom_form_validation_error(request, exc):
     reformatted_message = defaultdict(list)
@@ -21,9 +23,11 @@ async def custom_form_validation_error(request, exc):
     return raise_error(False,Response.INVALID_REQUEST,reformatted_message,status.HTTP_400_BAD_REQUEST)
 
 
-
+# including the router
 app.include_router(addressbook.router,prefix=Urls.ADDRESS_URL,tags=["Address Book"])
 
+
+# Initial route of the application
 @app.get("/")
 def index():
     return make_response(True,Response.WELCOME_TO_ADDRESS_BOOK,[])

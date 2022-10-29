@@ -8,6 +8,10 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 db_path = os.path.join(BASE_DIR, "address_app.db")
 
 
+'''
+Connecting the database
+'''
+
 SQLALCHEMY_DATABASE_URL = r"sqlite:///./address_app.db"
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}

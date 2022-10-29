@@ -1,5 +1,7 @@
 import os
-
+'''
+Basic Config settings
+'''
 
 NAME = "Address Book"
 VERSION = "0.1"
